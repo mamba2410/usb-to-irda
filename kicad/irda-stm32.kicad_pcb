@@ -9112,7 +9112,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "USB\nto\nIrDA"
+	(gr_text "USB\nto\nIrDA\nv1"
 		(at 164.8 74.9 0)
 		(layer "F.SilkS")
 		(uuid "71e3f48a-add9-4509-9b55-b1bf21791315")

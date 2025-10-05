@@ -2844,7 +2844,7 @@
 		)
 		(uuid "de31ab4c-8c12-40e1-9159-5fb08ee34d41")
 	)
-	(text "Alternative\nSTM32C071FBPx\n\nSlightly better/cheaper part but F042 is more available.\n\nF042F overlaps USB/UART1 which means its unuseable."
+	(text "Alternative\nSTM32C071FBP6\n\nSlightly better/cheaper part but F042 is more available.\n\nF042Fxxx overlaps USB/UART1 which means its unuseable."
 		(exclude_from_sim no)
 		(at 102.362 147.32 0)
 		(effects
