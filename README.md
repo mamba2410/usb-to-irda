@@ -34,9 +34,9 @@ Tips:
 
 Order from your favourite PCB fab. Files provided will be for JLC. If you want others (e.g. PCBway) then you'll have to generate them yourself from the KiCad files.
 
-This is a 2-layer board, 1.6mm thickness (other thicknesses should work). HASL finish is fine.
+This is a 2-layer board, 1.6mm thickness, lead-free HASL finish.
 Don't bother with the stencil unless you want to use a hot plate and solder paste.
-You should be able to buy 5 for like $2 plus shipping.
+You should be able to buy 5 for like $3 plus shipping.
 
 ### Parts
 
@@ -52,7 +52,7 @@ You should be able to buy 5 for like $2 plus shipping.
 - 47R resistor x 2 - RC0603FR-1047RL
 - 0.1u capacitor x 1 - MCASE168SB5104KTNA01
 - 1u capacitor x 2 - LMK107BJ105MAHT
-- 4.7u capacitors x 4 - LMK107BJ475KA-T
+- 4.7u capacitors x 2 - LMK107BJ475KA-T
 - LEDs x 4 
   - Green/yellow (574 nm) - KG EELP41.22-PHRH-35-A8J8-20-R18 
   - Yellow (590 nm) - 150060YS83000
@@ -94,6 +94,12 @@ If you want to change the program, you'll have a bit of trouble since I haven't 
 If you want to debug, you'll need to solder the SWD header. Its the same as the UART header.
 
 If you want to edit the 3D files, use FreeCad 1.0 or higher.
+
+Generating the KiKit files from the KiCad shell
+
+```bash
+kikit panelize -p kikit.json .\irda-stm32.kicad_pcb panelized\panelized.kicad_pcb
+```
 
 ## License
 
