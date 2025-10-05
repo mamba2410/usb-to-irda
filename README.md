@@ -74,6 +74,8 @@ Enclosure is made using FreeCad 1.0.
 An STL file will be provided to be able to 3d print.
 You can either print this yourself, or get a bureau service to do it, like JLC.
 
+You will need 4x M3 x 12mm screws and 4x M3 nuts.
+
 ### Programming
 
 TBD
