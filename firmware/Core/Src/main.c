@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "tusb.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -31,7 +31,12 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define IRDA_TRANSFER_SIZE 1
+#define UART_TRANSFER_SIZE 1
+#define MAX_USB_SINGLE_READ 64
+#define IRDA_BUF_SIZE 256
+#define UART_BUF_SIZE 256
+#define TRANSACT_LED_DECAY_TIME 5
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -50,6 +55,21 @@ DMA_HandleTypeDef hdma_usart2_rx;
 PCD_HandleTypeDef hpcd_USB_DRD_FS;
 
 /* USER CODE BEGIN PV */
+uint8_t irda_irq_buf[IRDA_TRANSFER_SIZE];
+uint8_t uart_irq_buf[UART_TRANSFER_SIZE];
+
+volatile bool usb_mounted = false;
+
+const uint8_t reply[8] = {0xfa, 0x01, 0xa1, 0x97, 0xde, 0xad, 0xbe, 0xef};
+
+uint8_t irda_rx_buf[IRDA_BUF_SIZE];
+volatile size_t irda_rx_buf_count = 0;
+
+uint8_t uart_rx_buf[UART_BUF_SIZE];
+volatile size_t uart_rx_buf_count = 0;
+
+volatile uint32_t rx_led_off_time;
+volatile uint32_t tx_led_off_time;
 
 /* USER CODE END PV */
 
@@ -67,6 +87,232 @@ static void MX_FLASH_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+/*
+ * Copied straight from tinyusb
+ */
+size_t board_get_unique_id(uint8_t id[], size_t max_len) {
+  (void) max_len;
+  // fixed serial string is 01234567889ABCDEF
+  uint32_t* uid32 = (uint32_t*) (uintptr_t)id;
+  uid32[0] = 0x67452301u;
+  uid32[1] = 0xEFCDAB89u;
+  return 8;
+}
+
+/* Blink pattern
+ * - 250 ms  : device not mounted
+ * - 1000 ms : device mounted
+ * - 2500 ms : device is suspended
+ */
+enum {
+  BLINK_NOT_MOUNTED = 250,
+  BLINK_MOUNTED = 1000,
+  BLINK_SUSPENDED = 2500,
+};
+
+static uint32_t blink_interval_ms = BLINK_NOT_MOUNTED;
+
+// Invoked when device is mounted
+void tud_mount_cb(void) {
+  blink_interval_ms = BLINK_MOUNTED;
+  usb_mounted = true;
+}
+
+// Invoked when device is unmounted
+void tud_umount_cb(void) {
+  blink_interval_ms = BLINK_NOT_MOUNTED;
+  usb_mounted = false;
+}
+
+
+void set_rx_led() {
+	// Set RX LED and set off time
+	HAL_GPIO_WritePin(RX_LED_GPIO_Port, RX_LED_Pin, GPIO_PIN_SET);
+	rx_led_off_time = HAL_GetTick() + TRANSACT_LED_DECAY_TIME;
+}
+
+
+void set_tx_led() {
+	HAL_GPIO_WritePin(TX_LED_GPIO_Port, TX_LED_Pin, GPIO_PIN_SET);
+	tx_led_off_time = HAL_GetTick() + TRANSACT_LED_DECAY_TIME;
+}
+
+
+void start_irda_receive() {
+	HAL_StatusTypeDef res = HAL_IRDA_Receive_DMA(&hirda1, irda_irq_buf, IRDA_TRANSFER_SIZE);
+
+    // Sometimes returns `HAL_BUSY`. Not sure why but it seems fine if we ignore it
+	if(res != HAL_OK) {
+		Error_Handler();
+	}
+}
+
+
+void start_uart_receive() {
+	HAL_StatusTypeDef res = HAL_UART_Receive_DMA(&huart2, uart_irq_buf, UART_TRANSFER_SIZE);
+
+    // Sometimes returns `HAL_BUSY`. Not sure why but it seems fine if we ignore it
+	if(res != HAL_OK) {
+		Error_Handler();
+	}
+}
+
+
+void write_to_irda(uint8_t *buf, size_t len) {
+
+	if(HAL_IRDA_Abort(&hirda1) != HAL_OK) {
+		Error_Handler();
+	}
+
+	// 136 bytes * 10 bits / 115200 baud is 12 ms
+	if(HAL_IRDA_Transmit(&hirda1, buf, len, 15) != HAL_OK) {
+		Error_Handler();
+	}
+
+	start_irda_receive();
+
+}
+
+
+void write_to_user(uint8_t *buf, size_t len) {
+	int itf = 0;
+
+	// TODO: Probably need to check to see if transmit still in progress before starting
+	while(HAL_UART_Transmit_DMA(&huart2, buf, len) != HAL_OK) {
+		//Error_Handler();
+	}
+
+	if(usb_mounted) {
+		//for(size_t i = 0; i < len; i++) {
+	//		uint8_t c = buf[i];// ^ 0xaa;
+	//		tud_cdc_n_write_char(itf, c);
+	//	}
+		tud_cdc_n_write(itf, buf, len);
+		tud_cdc_n_write_flush(itf);
+	}
+
+
+}
+
+
+void usb_to_irda_task(void) {
+	int itf = 0;
+	while (tud_cdc_n_available(itf)) {
+		uint8_t buf[MAX_USB_SINGLE_READ];
+		uint32_t count = tud_cdc_n_read(itf, buf, MAX_USB_SINGLE_READ);
+
+		set_rx_led();
+
+		write_to_irda(buf, count);
+	}
+}
+
+
+void tud_cdc_line_state_cb(uint8_t instance, bool dtr, bool rts) {
+  (void)rts;
+}
+
+
+void led_blinking_task(void) {
+  static uint32_t start_ms = 0;
+  static bool led_state = false;
+
+  // Blink every interval ms
+  if (HAL_GetTick() - start_ms < blink_interval_ms) {
+    return; // not enough time
+  }
+  start_ms += blink_interval_ms;
+
+  HAL_GPIO_WritePin(POWER_LED_GPIO_Port, POWER_LED_Pin, led_state);
+  led_state = 1 - led_state; // toggle
+}
+
+
+
+void HAL_IRDA_RxCpltCallback(IRDA_HandleTypeDef *hirda) {
+	if(hirda->Instance != hirda1.Instance) return;
+
+	// Get data out of there ASAP to not overwrite it
+	for(size_t i = 0; i < IRDA_TRANSFER_SIZE; i++) {
+		irda_rx_buf[irda_rx_buf_count++] = irda_irq_buf[i];
+	}
+
+	// Main thread can check length of received data with `rx_buf_count`
+
+	// Blink TX LED
+	set_tx_led();
+
+	// Restart receiver
+	start_irda_receive();
+
+}
+
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+	if(huart->Instance != huart2.Instance) return;
+
+	for(size_t i = 0; i < UART_TRANSFER_SIZE; i++) {
+		uart_rx_buf[uart_rx_buf_count++] = uart_irq_buf[i];
+	}
+
+	set_rx_led();
+
+	start_uart_receive();
+}
+
+
+void irda_to_user_task() {
+	// Do we have data to act on?
+	if(irda_rx_buf_count <= 0) return;
+
+	/*
+	 * We need to be careful here.
+	 * We very likely will have data incoming as we print it out
+	 * Can't do CPU-less since tinyusb uses CPU.
+	 *
+	 */
+	size_t start = 0;
+	do {
+		size_t end_snapshot = irda_rx_buf_count;
+		size_t print_count = end_snapshot - start;
+		//if(print_count > 7 || irda_rx_buf[start] == (0xfc ^ 0xaa)) {
+			write_to_user(&irda_rx_buf[start], print_count);
+			start = end_snapshot;
+		//}
+
+	} while(start < irda_rx_buf_count);
+	irda_rx_buf_count = 0;
+
+}
+
+
+void uart_to_irda_task() {
+	if(uart_rx_buf_count <= 0) return;
+
+	size_t start = 0;
+	do {
+		size_t end_snapshot = uart_rx_buf_count;
+		size_t print_count = end_snapshot - start;
+		write_to_irda(&uart_rx_buf[start], print_count);
+		start = end_snapshot;
+	} while(start < uart_rx_buf_count);
+	uart_rx_buf_count = 0;
+
+}
+
+
+void check_leds_task() {
+	uint32_t now = HAL_GetTick();
+	if(now > tx_led_off_time) {
+		HAL_GPIO_WritePin(TX_LED_GPIO_Port, TX_LED_Pin, GPIO_PIN_RESET);
+	}
+
+	if(now > rx_led_off_time) {
+		HAL_GPIO_WritePin(RX_LED_GPIO_Port, RX_LED_Pin, GPIO_PIN_RESET);
+	}
+}
+
 
 /* USER CODE END 0 */
 
@@ -105,7 +351,16 @@ int main(void)
   MX_USB_PCD_Init();
   MX_FLASH_Init();
   /* USER CODE BEGIN 2 */
+  tud_init(BOARD_TUD_RHPORT);
 
+  // Enable IrDA transceiver
+  HAL_GPIO_WritePin(IRDA_SD_GPIO_Port, IRDA_SD_Pin, GPIO_PIN_RESET);
+
+  // Kickstart IR receiver
+  start_irda_receive();
+
+  // Kickstart UART receiver
+  start_uart_receive();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -115,6 +370,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	tud_task();
+	usb_to_irda_task();
+	uart_to_irda_task();
+	irda_to_user_task();
+	check_leds_task();
+	led_blinking_task();
+
   }
   /* USER CODE END 3 */
 }
@@ -211,7 +473,7 @@ static void MX_FLASH_Init(void)
   /*HAL_FLASH_OB_Launch(); */
 
   /* USER CODE BEGIN FLASH_Init 2 */
-
+  //HAL_FLASH_OB_Launch();
   /* USER CODE END FLASH_Init 2 */
 
 }

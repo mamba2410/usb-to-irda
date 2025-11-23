@@ -22,6 +22,7 @@
 #include "stm32c0xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "tusb.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -151,7 +152,8 @@ void SysTick_Handler(void)
 void USB_DRD_FS_IRQHandler(void)
 {
   /* USER CODE BEGIN USB_DRD_FS_IRQn 0 */
-
+	tud_int_handler(BOARD_TUD_RHPORT);
+	return;
   /* USER CODE END USB_DRD_FS_IRQn 0 */
   HAL_PCD_IRQHandler(&hpcd_USB_DRD_FS);
   /* USER CODE BEGIN USB_DRD_FS_IRQn 1 */
