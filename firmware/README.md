@@ -15,11 +15,10 @@ when connecting power.
 
 ## Quirks
 
-### BOOT0 with STM32
+The configurator view is broken with STM32CubeIDE V2.0.0 (at least on Linux)
+so you might need to use STM32CubeMX if you want to 
 
-The current configuration semi-bricks the device when compiled in `Debug` mode,
-it it works fine in `Release` mode.
-No idea why.
+### BOOT0 with STM32
 
 In CubeIDE/CubeMX V1.19.0, set boot behaviour with `nBOOT_SEL`, `nBOOT1`, 
 `nBOOT0` bits in `FLASH->User Configuration->Activate`.
@@ -36,14 +35,16 @@ bootloader mode.
 
 ### Un-bricking the device
 
-I don't know what causes it, but the device ends up in a bad state if you don't
-have the exact right configuration.
+If you don't explicitly set RDP (readout protections) it can (and usually does)
+set maximum readout protection level, rendering the device useless until 
+rescued with an st-link.
 
-The device erases all flash and sets all option bits to 1.
-This ends up setting the flash read-out protection to "all" which means the 
-chip can't read the flash and then can't boot, or something.
+The to rescue the device, connect an ST-link to the SWD port and open STM32 
+programmer. In the "OB" tab on the left, set the read-out protection to `0xAA`
+and reprogram.
 
-The fix is to connect with an ST-link and STM32 programmer program, then in
-the "OB" tab on the left, set the read-out protection to `0xAA` and reprogram.
+The MCU should do this itself.
+See CubeMX `FLASH->User Configuration->Read-Out Protection->Activate".
+This should be set to level 0.
 
 

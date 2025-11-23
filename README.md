@@ -18,6 +18,8 @@ Cables to adapt to 0.1" headers should be easily purchaseable online.
 Pinouts are labeled on the board for UART TX and RX, and SWD data and clock.
 There is also a pin header hole for the NRST pin to connect to an ST-link.
 
+The product name is "USB to IrDA" and the vendor name is "mamba2410".
+
 ## Instructions
 
 Until I/someone makes a JLC PCBA project for this, you will need to buy the 

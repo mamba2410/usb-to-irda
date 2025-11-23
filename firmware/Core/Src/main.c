@@ -449,7 +449,9 @@ static void MX_FLASH_Init(void)
   {
     Error_Handler();
   }
-  pOBInit.OptionType = OPTIONBYTE_USER|OPTIONBYTE_SEC;
+  pOBInit.OptionType = OPTIONBYTE_RDP|OPTIONBYTE_USER
+                              |OPTIONBYTE_SEC;
+  pOBInit.RDPLevel = OB_RDP_LEVEL_0;
   pOBInit.USERType = OB_USER_NBOOT_SEL|OB_USER_NBOOT1
                               |OB_USER_NRST_MODE;
   pOBInit.USERConfig = OB_BOOT0_FROM_PIN|OB_BOOT1_SYSTEM
@@ -538,18 +540,6 @@ static void MX_USART2_UART_Init(void)
   huart2.Init.ClockPrescaler = UART_PRESCALER_DIV1;
   huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
   if (HAL_UART_Init(&huart2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_SetTxFifoThreshold(&huart2, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_SetRxFifoThreshold(&huart2, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_DisableFifoMode(&huart2) != HAL_OK)
   {
     Error_Handler();
   }
