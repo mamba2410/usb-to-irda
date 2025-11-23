@@ -5,6 +5,113 @@
 	(uuid "35d2c378-160a-4a6c-804a-a5cdfa97d871")
 	(paper "A4")
 	(lib_symbols
+		(symbol "Connector:TestPoint"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.762)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Connector:USB_C_Receptacle_USB2.0_16P"
 			(pin_names
 				(offset 1.016)
@@ -2671,16 +2778,6 @@
 		)
 		(uuid "1d017ac6-3da0-4258-9958-90c9d8383cb7")
 	)
-	(text "May not be needed\nConsider debounce?"
-		(exclude_from_sim no)
-		(at 55.118 127.762 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "680902ca-768e-41fd-8365-34352765a776")
-	)
 	(text "Two 5k1 resistors in parallel to have ~2k current lim for LEDs.\nRemoves another item off the BOM and resistors cost pennies, so not a huge cost increase."
 		(exclude_from_sim no)
 		(at 237.49 124.206 0)
@@ -2812,7 +2909,7 @@
 		)
 		(uuid "9509ef63-9336-47b7-8c96-1c65a1fb93f8")
 	)
-	(text_box "BOM part numbers\n\nIrDA transceiver - TFBS4711 (TR1/TT1 for hand solder)\nMCU - STM32F042K6T6\nUSB connector x 1 of either:\n- 12402012E212A (Amphenol)\n- USB4215-03-A (GCT)\n3.3V regulator - TLV1117LV33DCYR\nUART connectors - SM03B-SRSS-TB\nButtons x 2 - B3FS1012P\n5.1k resistors x 12 - RC0603FR-105K1L\n47R resistor x 2 - RC0603FR-1047RL\n0.1u capacitor x 1 - MCASE168SB5104KTNA01\n1u capacitor x 2 - LMK107BJ105MAHT\n4.7u capacitors x 2 - LMK107BJ475KA-T\nLEDs x 4 (https://405nm.com/wavelength-to-color/)\n- Green/yellow (574 nm) - KG EELP41.22-PHRH-35-A8J8-20-R18 \n- Yellow (590 nm) - 150060YS83000\n- Red (624 nm) - KR EELP41.22-Q1S1-36-A8J8-020-R18\n- Amber (610 nm) - 150060AS83000 \n- Blue (465 nm) - 150060BS83000 \n- Green (527 nm) - KT EELP41.12-S2U1-25-2X4X-5-R18 \n- White - KW EELP41.RU-S1U1-3K6L-3X4X-5-R18\n\n\n\n \n\n\n\n\n"
+	(text_box "BOM part numbers\n\nIrDA transceiver - TFBS4711 (TR1/TT1 for hand solder)\nMCU - STM32C071FBP6\nUSB connector x 1 of either:\n- 12402012E212A (Amphenol)\n- USB4215-03-A (GCT)\n3.3V regulator - TLV1117LV33DCYR\nUART (and SWD) connector - SM03B-SRSS-TB\nButtons x 2 - B3FS1012P\n5.1k resistors x 12 - RC0603FR-105K1L\n47R resistor x 2 - RC0603FR-1047RL\n0.1u capacitor x 2 - MCASE168SB5104KTNA01\n1u capacitor x 2 - LMK107BJ105MAHT\n4.7u capacitors x 2 - LMK107BJ475KA-T\nLEDs x 4 (https://405nm.com/wavelength-to-color/)\n- Green/yellow (574 nm) - KG EELP41.22-PHRH-35-A8J8-20-R18 \n- Yellow (590 nm) - 150060YS83000\n- Red (624 nm) - KR EELP41.22-Q1S1-36-A8J8-020-R18\n- Amber (610 nm) - 150060AS83000 \n- Blue (465 nm) - 150060BS83000 \n- Green (527 nm) - KT EELP41.12-S2U1-25-2X4X-5-R18 \n- White - KW EELP41.RU-S1U1-3K6L-3X4X-5-R18\n\n\n\n \n\n\n\n\n"
 		(exclude_from_sim no)
 		(at 134.62 15.24 0)
 		(size 68.58 50.8)
@@ -2911,13 +3008,25 @@
 		(uuid "04a31ef5-cd27-4a30-883f-b7fd9053e9fd")
 	)
 	(junction
+		(at 55.88 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1ec9600e-c804-4209-857c-a3dbb2779940")
+	)
+	(junction
 		(at 231.14 143.51)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2e020230-d539-4abd-8b0f-01a52f12da13")
 	)
 	(junction
-		(at 41.91 162.56)
+		(at 34.29 171.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "391227c1-d804-43ca-9d6c-33ba64fb34f8")
+	)
+	(junction
+		(at 40.64 171.45)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "44a50e43-9829-4f2a-8249-b1e318eafa16")
@@ -2965,7 +3074,7 @@
 		(uuid "9d7f2f9c-a0b0-470b-95ac-053078ead3ca")
 	)
 	(junction
-		(at 43.18 137.16)
+		(at 43.18 132.08)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9e5fab35-d857-453d-9fd8-fccc42e56861")
@@ -3052,7 +3161,7 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 162.56) (xy 52.07 162.56)
+			(xy 40.64 171.45) (xy 50.8 171.45)
 		)
 		(stroke
 			(width 0)
@@ -3112,7 +3221,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 125.73) (xy 43.18 128.27)
+			(xy 43.18 120.65) (xy 43.18 121.92)
 		)
 		(stroke
 			(width 0)
@@ -3229,6 +3338,16 @@
 			(type default)
 		)
 		(uuid "2af5a9f4-0de0-4321-9731-78c8bbff9d7c")
+	)
+	(wire
+		(pts
+			(xy 55.88 132.08) (xy 62.23 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2cd12489-4b20-433e-abe5-57e589c3a0cc")
 	)
 	(wire
 		(pts
@@ -3402,7 +3521,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 137.16) (xy 46.99 137.16)
+			(xy 43.18 132.08) (xy 55.88 132.08)
 		)
 		(stroke
 			(width 0)
@@ -3422,7 +3541,7 @@
 	)
 	(wire
 		(pts
-			(xy 24.13 138.43) (xy 24.13 137.16)
+			(xy 27.94 140.97) (xy 27.94 132.08)
 		)
 		(stroke
 			(width 0)
@@ -3512,6 +3631,16 @@
 	)
 	(wire
 		(pts
+			(xy 34.29 160.02) (xy 34.29 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d269fb2-7023-4270-8c20-79a79ee507cc")
+	)
+	(wire
+		(pts
 			(xy 248.92 29.21) (xy 264.16 29.21)
 		)
 		(stroke
@@ -3549,16 +3678,6 @@
 			(type default)
 		)
 		(uuid "63b6e955-511e-41f1-81cb-e010233abdb1")
-	)
-	(wire
-		(pts
-			(xy 22.86 175.26) (xy 27.94 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "648fffab-d9be-45ef-bef2-081013bca42a")
 	)
 	(wire
 		(pts
@@ -3742,16 +3861,6 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 173.99) (xy 41.91 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8dcd1cd4-d22c-421f-9de1-88de14587e40")
-	)
-	(wire
-		(pts
 			(xy 154.94 93.98) (xy 152.4 93.98)
 		)
 		(stroke
@@ -3852,6 +3961,16 @@
 	)
 	(wire
 		(pts
+			(xy 43.18 139.7) (xy 43.18 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a250923b-b425-4336-b444-a0c0edaff6fb")
+	)
+	(wire
+		(pts
 			(xy 49.53 34.29) (xy 53.34 34.29)
 		)
 		(stroke
@@ -3872,7 +3991,7 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 162.56) (xy 41.91 166.37)
+			(xy 40.64 171.45) (xy 40.64 172.72)
 		)
 		(stroke
 			(width 0)
@@ -3972,7 +4091,7 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 137.16) (xy 43.18 137.16)
+			(xy 39.37 132.08) (xy 43.18 132.08)
 		)
 		(stroke
 			(width 0)
@@ -4022,7 +4141,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 135.89) (xy 43.18 137.16)
+			(xy 43.18 129.54) (xy 43.18 132.08)
 		)
 		(stroke
 			(width 0)
@@ -4162,13 +4281,23 @@
 	)
 	(wire
 		(pts
-			(xy 24.13 137.16) (xy 29.21 137.16)
+			(xy 27.94 132.08) (xy 29.21 132.08)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "e2b937cc-6a92-4381-9f84-18d2d5766181")
+	)
+	(wire
+		(pts
+			(xy 34.29 171.45) (xy 40.64 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e36ec7d3-8ffe-44eb-9bfc-c2f92e661aa4")
 	)
 	(wire
 		(pts
@@ -4182,7 +4311,7 @@
 	)
 	(wire
 		(pts
-			(xy 29.21 162.56) (xy 41.91 162.56)
+			(xy 27.94 171.45) (xy 34.29 171.45)
 		)
 		(stroke
 			(width 0)
@@ -4252,16 +4381,6 @@
 	)
 	(wire
 		(pts
-			(xy 38.1 175.26) (xy 41.91 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f8aa1f44-564b-49dc-96e9-8dc87fdc084d")
-	)
-	(wire
-		(pts
 			(xy 245.11 142.24) (xy 245.11 143.51)
 		)
 		(stroke
@@ -4272,7 +4391,7 @@
 	)
 	(wire
 		(pts
-			(xy 22.86 176.53) (xy 22.86 175.26)
+			(xy 40.64 180.34) (xy 40.64 182.88)
 		)
 		(stroke
 			(width 0)
@@ -4402,7 +4521,7 @@
 	)
 	(hierarchical_label "SWCLK"
 		(shape output)
-		(at 52.07 162.56 0)
+		(at 50.8 171.45 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4435,7 +4554,7 @@
 	)
 	(hierarchical_label "SWCLK"
 		(shape input)
-		(at 29.21 162.56 180)
+		(at 27.94 171.45 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4446,7 +4565,7 @@
 	)
 	(hierarchical_label "NRST"
 		(shape output)
-		(at 46.99 137.16 0)
+		(at 62.23 132.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4762,7 +4881,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0332e539-bc6d-4b47-bc0a-1d80b8c9c0b0")
-		(property "Reference" "R7"
+		(property "Reference" "R2"
 			(at 222.25 41.91 90)
 			(effects
 				(font
@@ -4814,7 +4933,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R7")
+					(reference "R2")
 					(unit 1)
 				)
 			)
@@ -4908,7 +5027,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1623c3a5-7b13-4897-9234-f3f2d0a297b8")
-		(property "Reference" "#PWR017"
+		(property "Reference" "#PWR07"
 			(at 214.63 48.26 0)
 			(effects
 				(font
@@ -4958,7 +5077,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR017")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -4974,7 +5093,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "18dbfd46-34d2-431a-a265-9705702c53a2")
-		(property "Reference" "C6"
+		(property "Reference" "C2"
 			(at 234.95 50.7999 0)
 			(effects
 				(font
@@ -5028,7 +5147,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "C6")
+					(reference "C2")
 					(unit 1)
 				)
 			)
@@ -5114,7 +5233,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 33.02 175.26 0)
+		(at 34.29 166.37 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5122,8 +5241,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1e93b0ed-5e61-4d95-acc9-41ae980238ce")
-		(property "Reference" "SW1"
-			(at 33.02 167.64 0)
+		(property "Reference" "SW2"
+			(at 26.67 166.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5132,15 +5251,16 @@
 			)
 		)
 		(property "Value" "BOOT0_BUT"
-			(at 33.02 170.18 0)
+			(at 35.56 166.3699 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" "irda:SW_SPST_Omron_B3FS-100xP"
-			(at 33.02 170.18 0)
+			(at 29.21 166.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5149,7 +5269,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 33.02 170.18 0)
+			(at 29.21 166.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5158,7 +5278,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 33.02 175.26 0)
+			(at 34.29 166.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5175,7 +5295,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "SW1")
+					(reference "SW2")
 					(unit 1)
 				)
 			)
@@ -5191,7 +5311,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "32de609e-3c7f-4e6e-8e1a-e059a035c827")
-		(property "Reference" "#PWR03"
+		(property "Reference" "#PWR09"
 			(at 34.29 74.93 0)
 			(effects
 				(font
@@ -5241,7 +5361,77 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR03")
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 43.18 135.89 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "339c751a-9b59-46f8-a540-43cfa9f10e4f")
+		(property "Reference" "C6"
+			(at 46.99 134.6199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1u"
+			(at 46.99 137.1599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 44.1452 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 43.18 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 43.18 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7ff88b7c-7d27-4d8a-b203-5d88ec5cce19")
+		)
+		(pin "2"
+			(uuid "a3ad8a9f-d48d-48b2-9190-8de4f85cb00a")
+		)
+		(instances
+			(project "irda-stm32"
+				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
+					(reference "C6")
 					(unit 1)
 				)
 			)
@@ -5257,7 +5447,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "37215a63-7d90-43b8-bc70-ca1c08772f25")
-		(property "Reference" "R13"
+		(property "Reference" "R12"
 			(at 262.89 137.1599 0)
 			(effects
 				(font
@@ -5311,7 +5501,73 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R13")
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 34.29 160.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "379978c7-8531-43dc-8d18-7f1ea9ac16e8")
+		(property "Reference" "#PWR022"
+			(at 34.29 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 34.29 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 34.29 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 34.29 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 34.29 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b37a7e7b-c9aa-4c2d-83c2-307153d70bf8")
+		)
+		(instances
+			(project "irda-stm32"
+				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
+					(reference "#PWR022")
 					(unit 1)
 				)
 			)
@@ -5440,7 +5696,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "51f262e0-2dd9-479f-8420-88cd8c3cb2d2")
-		(property "Reference" "U2"
+		(property "Reference" "U3"
 			(at 129.1433 83.82 0)
 			(effects
 				(font
@@ -5549,7 +5805,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "U2")
+					(reference "U3")
 					(unit 1)
 				)
 			)
@@ -5635,7 +5891,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5397efc8-ae13-454d-aa41-0f47a51b440f")
-		(property "Reference" "R2"
+		(property "Reference" "R4"
 			(at 43.18 91.4399 0)
 			(effects
 				(font
@@ -5689,7 +5945,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R2")
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -5705,7 +5961,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "55cca854-1cac-4c49-b69f-896b82674bfc")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR010"
 			(at 127 72.39 0)
 			(effects
 				(font
@@ -5755,7 +6011,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR014")
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)
@@ -5763,7 +6019,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 43.18 125.73 0)
+		(at 43.18 120.65 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5771,8 +6027,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5bf9c704-a432-4069-8a9d-852dc15a6b6b")
-		(property "Reference" "#PWR06"
-			(at 43.18 129.54 0)
+		(property "Reference" "#PWR014"
+			(at 43.18 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5781,7 +6037,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 43.18 120.65 0)
+			(at 43.18 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5789,7 +6045,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 43.18 125.73 0)
+			(at 43.18 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5798,7 +6054,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 43.18 125.73 0)
+			(at 43.18 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5807,7 +6063,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 43.18 125.73 0)
+			(at 43.18 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5821,7 +6077,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR06")
+					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -5829,7 +6085,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 22.86 176.53 0)
+		(at 40.64 182.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5837,8 +6093,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "603ad3b3-f265-4853-8372-3f3e7ac2458a")
-		(property "Reference" "#PWR01"
-			(at 22.86 182.88 0)
+		(property "Reference" "#PWR025"
+			(at 40.64 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5847,7 +6103,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 22.86 181.61 0)
+			(at 40.64 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5855,7 +6111,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 22.86 176.53 0)
+			(at 40.64 182.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5864,7 +6120,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 22.86 176.53 0)
+			(at 40.64 182.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5873,7 +6129,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 22.86 176.53 0)
+			(at 40.64 182.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5887,7 +6143,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR01")
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -5903,7 +6159,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6fb48ea3-1da1-43fb-a43c-855c9b1f0e48")
-		(property "Reference" "#PWR013"
+		(property "Reference" "#PWR02"
 			(at 125.73 31.75 0)
 			(effects
 				(font
@@ -5953,7 +6209,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR013")
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -5961,7 +6217,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 24.13 138.43 0)
+		(at 27.94 140.97 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5969,8 +6225,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "819810d0-88ba-426f-ab48-e72c386c7351")
-		(property "Reference" "#PWR02"
-			(at 24.13 144.78 0)
+		(property "Reference" "#PWR016"
+			(at 27.94 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5979,7 +6235,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 24.13 143.51 0)
+			(at 27.94 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5987,7 +6243,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 24.13 138.43 0)
+			(at 27.94 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5996,7 +6252,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 24.13 138.43 0)
+			(at 27.94 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6005,7 +6261,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 24.13 138.43 0)
+			(at 27.94 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6019,7 +6275,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR02")
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
@@ -6035,7 +6291,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "829a58bc-7e43-4bc0-bfd5-e6ab3906fa8c")
-		(property "Reference" "C5"
+		(property "Reference" "C4"
 			(at 124.46 33.0199 0)
 			(effects
 				(font
@@ -6089,7 +6345,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "C5")
+					(reference "C4")
 					(unit 1)
 				)
 			)
@@ -6105,7 +6361,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "875fcbab-2f9e-4c5f-9683-f889af050909")
-		(property "Reference" "#PWR024"
+		(property "Reference" "#PWR021"
 			(at 267.97 161.29 0)
 			(effects
 				(font
@@ -6155,7 +6411,73 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR024")
+					(reference "#PWR021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 43.18 140.97 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "93464087-1710-4a3a-9b33-2673d3ce431a")
+		(property "Reference" "#PWR017"
+			(at 43.18 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 43.18 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 43.18 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 43.18 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 43.18 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "95a0f3fc-05a3-4723-a238-6d243554344e")
+		)
+		(instances
+			(project "irda-stm32"
+				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
+					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -6171,7 +6493,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "94185764-dd16-4ef5-8dfb-e2e7878ba6d8")
-		(property "Reference" "R5"
+		(property "Reference" "R6"
 			(at 207.01 137.1599 0)
 			(effects
 				(font
@@ -6225,7 +6547,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R5")
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -6241,7 +6563,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "96ad281f-a9f0-47be-bd02-b06a0507084f")
-		(property "Reference" "R10"
+		(property "Reference" "R1"
 			(at 245.11 22.86 90)
 			(effects
 				(font
@@ -6293,7 +6615,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R10")
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -6380,7 +6702,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9b4197d5-2aa9-42db-9e87-69aa5e6b1621")
-		(property "Reference" "C1"
+		(property "Reference" "C3"
 			(at 86.36 33.0199 0)
 			(effects
 				(font
@@ -6434,7 +6756,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "C1")
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -6442,7 +6764,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 43.18 132.08 0)
+		(at 43.18 125.73 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6450,8 +6772,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9c2bc5e0-92f6-4644-b6a6-676288c61878")
-		(property "Reference" "R4"
-			(at 45.72 130.8099 0)
+		(property "Reference" "R5"
+			(at 45.72 124.4599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6460,7 +6782,7 @@
 			)
 		)
 		(property "Value" "5k1"
-			(at 45.72 133.3499 0)
+			(at 45.72 126.9999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6469,7 +6791,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 41.402 132.08 90)
+			(at 41.402 125.73 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6478,7 +6800,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 43.18 132.08 0)
+			(at 43.18 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6487,7 +6809,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 43.18 132.08 0)
+			(at 43.18 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6504,7 +6826,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R4")
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -6520,7 +6842,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9da6056a-b933-4be4-8e6c-fcd749cc9379")
-		(property "Reference" "U3"
+		(property "Reference" "U2"
 			(at 270.51 63.4999 0)
 			(effects
 				(font
@@ -6586,7 +6908,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "U3")
+					(reference "U2")
 					(unit 1)
 				)
 			)
@@ -6602,7 +6924,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a3a45701-c396-4ac8-92e8-a7e26ea59900")
-		(property "Reference" "#PWR011"
+		(property "Reference" "#PWR05"
 			(at 120.65 45.72 0)
 			(effects
 				(font
@@ -6652,7 +6974,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR011")
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
@@ -6668,7 +6990,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a7698d6a-aead-41f4-8cce-912140a3505e")
-		(property "Reference" "#PWR018"
+		(property "Reference" "#PWR01"
 			(at 228.6 29.21 0)
 			(effects
 				(font
@@ -6718,7 +7040,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR018")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -6734,7 +7056,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a80d2d9a-61ae-4b93-9a75-c9612b054ee2")
-		(property "Reference" "C4"
+		(property "Reference" "C5"
 			(at 106.68 73.6599 0)
 			(effects
 				(font
@@ -6788,7 +7110,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "C4")
+					(reference "C5")
 					(unit 1)
 				)
 			)
@@ -6804,7 +7126,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a9e8d984-7d84-4989-8b21-675b3b78a883")
-		(property "Reference" "#PWR012"
+		(property "Reference" "#PWR024"
 			(at 123.19 187.96 0)
 			(effects
 				(font
@@ -6854,7 +7176,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR012")
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -6870,7 +7192,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "af568378-2ef8-4bec-beb9-1008e4e9f1f5")
-		(property "Reference" "R6"
+		(property "Reference" "R7"
 			(at 214.63 137.1599 0)
 			(effects
 				(font
@@ -6924,7 +7246,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R6")
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -6940,7 +7262,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b1723db3-f033-4b1e-8e69-13272115364d")
-		(property "Reference" "R12"
+		(property "Reference" "R11"
 			(at 250.19 137.1599 0)
 			(effects
 				(font
@@ -6994,7 +7316,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R12")
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -7081,7 +7403,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b7d7ccf6-60f9-4d02-8175-e4daaa38bd71")
-		(property "Reference" "#PWR027"
+		(property "Reference" "#PWR018"
 			(at 212.09 161.29 0)
 			(effects
 				(font
@@ -7131,7 +7453,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR027")
+					(reference "#PWR018")
 					(unit 1)
 				)
 			)
@@ -7139,7 +7461,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 41.91 170.18 0)
+		(at 40.64 176.53 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7147,8 +7469,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bb446d4c-28aa-403e-8634-be85e5b462d6")
-		(property "Reference" "R3"
-			(at 44.45 168.9099 0)
+		(property "Reference" "R14"
+			(at 43.18 175.2599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7157,7 +7479,7 @@
 			)
 		)
 		(property "Value" "5k1"
-			(at 44.45 171.4499 0)
+			(at 43.18 177.7999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7166,7 +7488,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 40.132 170.18 90)
+			(at 38.862 176.53 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7175,7 +7497,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 41.91 170.18 0)
+			(at 40.64 176.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7184,7 +7506,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 41.91 170.18 0)
+			(at 40.64 176.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7201,7 +7523,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R3")
+					(reference "R14")
 					(unit 1)
 				)
 			)
@@ -7217,7 +7539,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bb858e5c-b35a-436e-b1a2-2af76d8a0080")
-		(property "Reference" "#PWR019"
+		(property "Reference" "#PWR08"
 			(at 231.14 63.5 0)
 			(effects
 				(font
@@ -7267,7 +7589,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR019")
+					(reference "#PWR08")
 					(unit 1)
 				)
 			)
@@ -7283,7 +7605,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c23c4475-9ab0-41d7-abd6-ac1b759b92b1")
-		(property "Reference" "#PWR010"
+		(property "Reference" "#PWR011"
 			(at 102.87 87.63 0)
 			(effects
 				(font
@@ -7333,7 +7655,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR010")
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)
@@ -7349,7 +7671,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c55397f5-3a18-4976-805c-d1f82f84d245")
-		(property "Reference" "#PWR026"
+		(property "Reference" "#PWR019"
 			(at 231.14 161.29 0)
 			(effects
 				(font
@@ -7399,7 +7721,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR026")
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -7415,7 +7737,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c59142eb-8a40-4390-8af0-ad15f2c75a13")
-		(property "Reference" "R11"
+		(property "Reference" "R10"
 			(at 242.57 137.1599 0)
 			(effects
 				(font
@@ -7469,7 +7791,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R11")
+					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -7556,7 +7878,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 34.29 137.16 0)
+		(at 34.29 132.08 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7564,8 +7886,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c8bf7472-7ce4-40da-ac25-17dc1fdbda5c")
-		(property "Reference" "SW2"
-			(at 34.29 129.54 0)
+		(property "Reference" "SW1"
+			(at 34.29 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7574,7 +7896,7 @@
 			)
 		)
 		(property "Value" "NRST_BUT"
-			(at 34.29 132.08 0)
+			(at 34.29 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7582,7 +7904,7 @@
 			)
 		)
 		(property "Footprint" "irda:SW_SPST_Omron_B3FS-100xP"
-			(at 34.29 132.08 0)
+			(at 34.29 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7591,7 +7913,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 34.29 132.08 0)
+			(at 34.29 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7600,7 +7922,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 34.29 137.16 0)
+			(at 34.29 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7617,7 +7939,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "SW2")
+					(reference "SW1")
 					(unit 1)
 				)
 			)
@@ -7703,7 +8025,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d178715b-67a8-4c97-b496-65a47f20a16b")
-		(property "Reference" "R1"
+		(property "Reference" "R3"
 			(at 33.02 91.4399 0)
 			(effects
 				(font
@@ -7757,7 +8079,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R1")
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -7829,6 +8151,72 @@
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
 					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 55.88 132.08 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp yes)
+		(uuid "da7b17bb-b3f7-4514-b77c-836aa62825ee")
+		(property "Reference" "TP1"
+			(at 54.356 123.698 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NRST"
+			(at 54.356 126.238 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
+			(at 60.96 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 60.96 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 55.88 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ec751b6b-12d4-4e4e-8fa9-6cb290a40ac7")
+		)
+		(instances
+			(project ""
+				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
+					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -7922,7 +8310,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dffc0964-ac50-4dc3-91c0-17a76c9f4a74")
-		(property "Reference" "C7"
+		(property "Reference" "C1"
 			(at 238.76 31.7499 0)
 			(effects
 				(font
@@ -7976,7 +8364,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "C7")
+					(reference "C1")
 					(unit 1)
 				)
 			)
@@ -7992,7 +8380,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e14ffcd1-06b1-4d4c-ab4d-5a6cd2ab7278")
-		(property "Reference" "#PWR04"
+		(property "Reference" "#PWR013"
 			(at 35.56 106.68 0)
 			(effects
 				(font
@@ -8042,7 +8430,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR04")
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -8058,7 +8446,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e2ff0096-5084-48a8-93c8-dd1868fa01cd")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR04"
 			(at 90.17 45.72 0)
 			(effects
 				(font
@@ -8108,7 +8496,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR07")
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -8124,7 +8512,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e5ce9511-7486-40aa-8616-e7c6830d3e29")
-		(property "Reference" "R14"
+		(property "Reference" "R13"
 			(at 270.51 137.1599 0)
 			(effects
 				(font
@@ -8178,7 +8566,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "R14")
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -8194,7 +8582,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ec4812af-5e1d-498d-9048-09105fcb9573")
-		(property "Reference" "#PWR08"
+		(property "Reference" "#PWR023"
 			(at 91.44 187.96 0)
 			(effects
 				(font
@@ -8244,7 +8632,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR08")
+					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -8260,7 +8648,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f1767083-a51b-40ab-ae33-1ae4240259ab")
-		(property "Reference" "#PWR023"
+		(property "Reference" "#PWR012"
 			(at 261.62 87.63 0)
 			(effects
 				(font
@@ -8310,7 +8698,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR023")
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -8326,7 +8714,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f3707463-0e14-4e7d-8a69-91ad6090c1e3")
-		(property "Reference" "#PWR025"
+		(property "Reference" "#PWR020"
 			(at 247.65 161.29 0)
 			(effects
 				(font
@@ -8376,7 +8764,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR025")
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -8392,7 +8780,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f8df2cf0-21b9-4615-8a24-4e60738d03f4")
-		(property "Reference" "#PWR09"
+		(property "Reference" "#PWR06"
 			(at 105.41 46.99 0)
 			(effects
 				(font
@@ -8442,7 +8830,7 @@
 		(instances
 			(project ""
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR09")
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -8458,7 +8846,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fa254e0d-e7ec-4149-92c1-b58f95b29d77")
-		(property "Reference" "#PWR021"
+		(property "Reference" "#PWR03"
 			(at 234.95 44.45 0)
 			(effects
 				(font
@@ -8508,7 +8896,7 @@
 		(instances
 			(project "irda-stm32"
 				(path "/35d2c378-160a-4a6c-804a-a5cdfa97d871"
-					(reference "#PWR021")
+					(reference "#PWR03")
 					(unit 1)
 				)
 			)
