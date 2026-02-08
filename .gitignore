@@ -2,6 +2,9 @@
 *.lck
 *.FCbak
 
+kicad/#auto_saved_files#
+kicad/fabrication-toolkit-options.json
 kicad/irda-stm32-backups/
 kicad/panelized/
+kicad/production/
 
